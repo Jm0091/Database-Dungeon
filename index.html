@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Dive into the world of databases with our ultimate guide. Discover essential insights, tips, and strategies for full stack developers to unlock hidden gems of knowledge!">
+    <meta name="keywords"
+        content="database, database wizardry, full stack development, SQL, MySQL, data storage, optimization, programming tips, tech blog">
+    <meta name="author" content="Jems Chaudhary">
+    <link rel="canonical" href="https://your-username.github.io/database-blog/">
+
+
+    <title>Database Dungeon</title>
+    <link rel="icon" type="image/x-icon" href="book.svg">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap" rel="stylesheet">
+
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="stylesheet.css" />
+</head>
+
+<body>
+    <header class="header sticky-top">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1 class="header-title">Database Dungeon</h1>
+            <nav class="d-flex flex-row">
+                <a href="https://www.linkedin.com/in/jemsc/" target="_blank" class="btn bounce"
+                    title="Jump to LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/jm0091" target="_blank" class="btn bounce" title="Jump to GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container content">
+        <h2 class="text-center mb-4">let’s see what valuable DB secrets lie in the shadows!</h2>
+        <div class="qa-section">
+            <div class="qa-section">
+                <div class="question">
+                    <h3>How would you handle deadlocks in SQL Server? What strategies can you use to avoid them?</h3>
+                    <div class="container mt-5">
+                        <p class="my-paragraph d-flex justify-content-between align-items-center">
+                            <span>Answer: A deadlock occurs when two transactions wait indefinitely for resources held
+                                by each other.</span>
+                            <a class="toggle-collapse" data-bs-toggle="collapse" href="#collapsibleText1" role="button"
+                                aria-expanded="false" aria-controls="collapsibleText1">
+                                Read more <i class="bi bi-chevron-down"></i>
+                            </a>
+                        </p>
+                        <div id="collapsibleText1" class="collapse">
+                            <p>
+                                <strong>Handling deadlocks:</strong>
+                            <ul>
+                                <li>Detect and Kill: SQL Server has a built-in deadlock detection mechanism. It kills one of
+                                    the
+                                    transactions (the "victim") and rolls it back.
+                                </li>
+                            </ul>
+                            <strong>Avoiding deadlocks:</strong>
+                            <ol>
+                                <li>Use consistent locking order: Ensure all transactions acquire locks in the same order to
+                                    avoid circular waiting.</li>
+                                <li>Reduce transaction scope: Keep transactions short and avoid user interaction during a
+                                    transaction.</li>
+                                <li>Use the NOLOCK hint: Where appropriate, allow read operations without taking shared
+                                    locks.
+                                </li>
+                                <li>Implement isolation levels carefully: Use READ COMMITTED SNAPSHOT isolation to reduce
+                                    blocking.</li>
+                            </ol>
+                            Industry scenario: At Microsoft, large systems use a combination of deadlock avoidance and
+                            automated detection mechanisms to maintain smooth operations across multiple services.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <h3>What is sharding, and how does it improve performance? How do you implement it?</h3>
+                    <div class="container mt-5">
+                        <p class="my-paragraph d-flex justify-content-between align-items-center">
+                            <span>Sharding is a database partitioning technique where large datasets are split across
+                                multiple servers (shards).</span>
+                            <a class="toggle-collapse" data-bs-toggle="collapse" href="#collapsibleText2" role="button"
+                                aria-expanded="false" aria-controls="collapsibleText2">
+                                Read more <i class="bi bi-chevron-down"></i>
+                            </a>
+                        </p>
+                        <div id="collapsibleText2" class="collapse">
+                            <p>
+                                Each shard holds a portion of the data (e.g.,
+                                customer data split by geographic regions), enabling horizontal scaling. This improves
+                                performance by reducing the load on any single database instance and allowing parallel
+                                processing.
+                                <br>
+                                <strong>How it improves performance:</strong>
+                            <ul>
+                                <li>Faster queries: Each shard can be queried independently, allowing for simultaneous
+                                    access to multiple data segments.</li>
+                                <li>Better load balancing: Distributing data across shards helps manage large volumes of
+                                    requests without overwhelming a single server.</li>
+                                <li>Reduced latency: Data is closer to the user, as it can be stored in geographically
+                                    distributed shards.</li>
+                            </ul>
+    
+                            <strong>Implementation:</strong>
+                            <ol>
+                                <li><strong>Range-based Sharding:</strong> Shard based on a continuous range of values, like
+                                    user IDs or dates.</li>
+                                <li><strong>Hash-based Sharding:</strong> Use hash values of a key (e.g., customer ID) to
+                                    determine the shard.</li>
+                                <li><strong>Directory-based Sharding:</strong> Maintain a lookup table that tells which
+                                    shard contains specific data.</li>
+                            </ol>
+    
+                            <strong>Industry example:</strong> In large financial applications like <strong>PayPal</strong>,
+                            sharding is implemented to ensure that transactions can be processed quickly and efficiently,
+                            even under heavy load during peak usage times.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <h3>How do you optimize a slow query in a high-traffic environment?</h3>
+                    <div class="container mt-5">
+                        <p class="my-paragraph d-flex justify-content-between align-items-center">
+                            <span>Optimizing a slow query requires a combination of techniques:
+                            </span>
+                            <a class="toggle-collapse" data-bs-toggle="collapse" href="#collapsibleText3" role="button"
+                                aria-expanded="false" aria-controls="collapsibleText">
+                                Read more <i class="bi bi-chevron-down"></i>
+                            </a>
+                        </p>
+                        <div id="collapsibleText3" class="collapse">
+                            <p>
+                            <ol>
+                                <li><strong>Indexing:</strong> Ensure the columns used in <code>WHERE</code>,
+                                    <code>JOIN</code>, or <code>ORDER BY</code> clauses are indexed appropriately.
+                                </li>
+                                <li><strong>Query Refactoring:</strong> Rewrite the query to reduce complexity.</li>
+                                <li><strong>Query Execution Plan Analysis:</strong> Use tools like <code>EXPLAIN</code> to
+                                    understand where the bottlenecks are.</li>
+                                <li><strong>Caching:</strong> Use caching mechanisms like <strong>Redis</strong> or
+                                    <strong>Memcached</strong>.
+                                </li>
+                                <li><strong>Partitioning:</strong> For extremely large tables, use horizontal or vertical
+                                    partitioning.</li>
+                            </ol>
+                            <strong>Industry example:</strong> At <strong>Netflix</strong>, heavy data is optimized with
+                            partitioning and query caching.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="question">
+                    <h3>What is the difference between <code>TRUNCATE</code>, <code>DELETE</code>, and <code>DROP</code>
+                        commands?</h3>
+                    <div class="container mt-5">
+                        <p class="my-paragraph d-flex justify-content-between align-items-center">
+                            <span><strong><code>TRUNCATE</code>:</strong> Removes all rows from a table but does not log
+                                individual row deletions.
+                            </span>
+                            <a class="toggle-collapse" data-bs-toggle="collapse" href="#collapsibleText4" role="button"
+                                aria-expanded="false" aria-controls="collapsibleText">
+                                Read more <i class="bi bi-chevron-down"></i>
+                            </a>
+                        </p>
+                        <div id="collapsibleText4" class="collapse">
+                            <p>
+                                <strong><code>DELETE</code>:</strong> Removes rows from a table based on a condition.
+                                <br>
+                                <strong><code>DROP</code>:</strong> Completely removes the table and its structure from the
+                                database.
+                                <br>
+                                <strong>Industry scenario:</strong> Large-scale organizations like <strong>Twitter</strong>
+                                often use <code>TRUNCATE</code> to quickly clear temporary tables.
+    
+                            </p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="question">
+                    <h3>How do database normalization and denormalization work? What are their trade-offs?</h3>
+                    <div class="container mt-5">
+                        <p class="my-paragraph d-flex justify-content-between align-items-center">
+                            <span><strong>Normalization</strong> is the process of organizing data to reduce redundancy and
+                                improve integrity.
+    
+                            </span>
+                            <a class="toggle-collapse" data-bs-toggle="collapse" href="#collapsibleText5" role="button"
+                                aria-expanded="false" aria-controls="collapsibleText">
+                                Read more <i class="bi bi-chevron-down"></i>
+                            </a>
+                        </p>
+                        <div id="collapsibleText5" class="collapse">
+                            <p> <strong>Denormalization</strong> involves combining tables to reduce joins and improve read
+                                performance.
+                                <br>
+                                <strong>Trade-offs:</strong>
+                            <ul>
+                                <li>Normalization optimizes for write-heavy systems and ensures data consistency.</li>
+                                <li>Denormalization improves read performance but complicates updates and data integrity.
+                                </li>
+                            </ul>
+                            <strong>Industry use:</strong> <strong>Facebook</strong> uses denormalization in analytics
+                            systems for performance gains.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="question">
+                    <h3>Explain how ACID properties (Atomicity, Consistency, Isolation, Durability) work in transactions.
+                    </h3>
+                    <div class="container mt-5">
+                        <p class="my-paragraph d-flex justify-content-between align-items-center">
+                            <span><strong>Atomicity:</strong> A transaction must be all-or-nothing.
+                            </span>
+                            <a class="toggle-collapse" data-bs-toggle="collapse" href="#collapsibleText6" role="button"
+                                aria-expanded="false" aria-controls="collapsibleText">
+                                Read more <i class="bi bi-chevron-down"></i>
+                            </a>
+                        </p>
+                        <div id="collapsibleText6" class="collapse">
+                            <p>
+                                <strong>Consistency:</strong> A transaction takes the database from one valid state to
+                                another.
+                                <br>
+                                <strong>Isolation:</strong> Transactions operate independently without interference.
+                                <br>
+                                <strong>Durability:</strong> Once a transaction is committed, the data remains persistent.
+                                <br>
+                                <strong>Industry:</strong> ACID properties are crucial for mission-critical applications
+                                like <strong>Uber</strong>.
+    
+                            </p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="question">
+                    <h3>What is the purpose of a materialized view, and when would you use it over a normal view?</h3>
+                    <div class="container mt-5">
+                        <p class="my-paragraph d-flex justify-content-between align-items-center">
+                            <span>A <strong>materialized view</strong> stores the result of a query physically on disk,
+                                providing faster access.
+                            </span>
+                            <a class="toggle-collapse" data-bs-toggle="collapse" href="#collapsibleText7" role="button"
+                                aria-expanded="false" aria-controls="collapsibleText">
+                                Read more <i class="bi bi-chevron-down"></i>
+                            </a>
+                        </p>
+                        <div id="collapsibleText7" class="collapse">
+                            <p>
+                                <strong>Use cases:</strong>
+                            <ul>
+                                <li>Frequently queried data that changes infrequently.</li>
+                                <li>Aggregate data summaries.</li>
+                            </ul>
+                            <strong>Industry example:</strong> In large financial institutions like
+                            <strong>JPMorgan</strong>, materialized views are used for analytical reporting on large
+                            datasets.
+    
+                            </p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="question">
+                    <h3> Describe a scenario where you would use a stored procedure instead of a trigger.</h3>
+                    <div class="container mt-5">
+                        <p class="my-paragraph d-flex justify-content-between align-items-center">
+                            <span> A <strong>stored procedure</strong> is explicitly executed by a user or an application,
+                                ideal for tasks requiring user input or parameters.
+    
+                            </span>
+                            <a class="toggle-collapse" data-bs-toggle="collapse" href="#collapsibleText8" role="button"
+                                aria-expanded="false" aria-controls="collapsibleText">
+                                Read more <i class="bi bi-chevron-down"></i>
+                            </a>
+                        </p>
+                        <div id="collapsibleText8" class="collapse">
+                            <p>
+                                A <strong>trigger</strong> is automatically invoked by a database event.
+                                <br>
+                                <strong>Scenario:</strong> In an <strong>e-commerce application</strong>, a stored procedure
+                                could process an order when a customer checks out, while a trigger could log activity or
+                                send notifications automatically.
+                                <br>
+                                <strong>Industry standard:</strong> Stored procedures are commonly used for processing
+                                payroll, while triggers are used by companies like <strong>LinkedIn</strong> to log
+                                activity.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <div class="question">
+                <h3>How do you optimize a slow query in a high-traffic environment?</h3>
+                <div class="container mt-5">
+                    <p class="my-paragraph d-flex justify-content-between align-items-center">
+                        <span>Optimizing a slow query requires a combination of techniques:
+                        </span>
+                        <a class="toggle-collapse" data-bs-toggle="collapse" href="#collapsibleText" role="button"
+                            aria-expanded="false" aria-controls="collapsibleText">
+                            Read more <i class="bi bi-chevron-down"></i>
+                        </a>
+                    </p>
+                    <div id="collapsibleText" class="collapse">
+                        <p>
+                        <ol>
+                            <li><strong>Indexing:</strong> Ensure the columns used in <code>WHERE</code>,
+                                <code>JOIN</code>, or <code>ORDER BY</code> clauses are indexed appropriately.
+                            </li>
+                            <li><strong>Query Refactoring:</strong> Rewrite the query to reduce complexity.</li>
+                            <li><strong>Query Execution Plan Analysis:</strong> Use tools like <code>EXPLAIN</code> to
+                                understand where the bottlenecks are.</li>
+                            <li><strong>Caching:</strong> Use caching mechanisms like <strong>Redis</strong> or
+                                <strong>Memcached</strong>.
+                            </li>
+                            <li><strong>Partitioning:</strong> For extremely large tables, use horizontal or vertical
+                                partitioning.</li>
+                        </ol>
+                        <strong>Industry example:</strong> At <strong>Netflix</strong>, heavy data is optimized with
+                        partitioning and query caching.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>What is the difference between <code>TRUNCATE</code>, <code>DELETE</code>, and <code>DROP</code>
+                    commands?</h3>
+                <div class="container mt-5">
+                    <p class="my-paragraph d-flex justify-content-between align-items-center">
+                        <span><strong><code>TRUNCATE</code>:</strong> Removes all rows from a table but does not log
+                            individual row deletions.
+                        </span>
+                        <a class="toggle-collapse" data-bs-toggle="collapse" href="#collapsibleText" role="button"
+                            aria-expanded="false" aria-controls="collapsibleText">
+                            Read more <i class="bi bi-chevron-down"></i>
+                        </a>
+                    </p>
+                    <div id="collapsibleText" class="collapse">
+                        <p>
+                            <strong><code>DELETE</code>:</strong> Removes rows from a table based on a condition.
+                            <br>
+                            <strong><code>DROP</code>:</strong> Completely removes the table and its structure from the
+                            database.
+                            <br>
+                            <strong>Industry scenario:</strong> Large-scale organizations like <strong>Twitter</strong>
+                            often use <code>TRUNCATE</code> to quickly clear temporary tables.
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>How do database normalization and denormalization work? What are their trade-offs?</h3>
+                <div class="container mt-5">
+                    <p class="my-paragraph d-flex justify-content-between align-items-center">
+                        <span><strong>Normalization</strong> is the process of organizing data to reduce redundancy and
+                            improve integrity.
+
+                        </span>
+                        <a class="toggle-collapse" data-bs-toggle="collapse" href="#collapsibleText" role="button"
+                            aria-expanded="false" aria-controls="collapsibleText">
+                            Read more <i class="bi bi-chevron-down"></i>
+                        </a>
+                    </p>
+                    <div id="collapsibleText" class="collapse">
+                        <p> <strong>Denormalization</strong> involves combining tables to reduce joins and improve read
+                            performance.
+                            <br>
+                            <strong>Trade-offs:</strong>
+                        <ul>
+                            <li>Normalization optimizes for write-heavy systems and ensures data consistency.</li>
+                            <li>Denormalization improves read performance but complicates updates and data integrity.
+                            </li>
+                        </ul>
+                        <strong>Industry use:</strong> <strong>Facebook</strong> uses denormalization in analytics
+                        systems for performance gains.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>Explain how ACID properties (Atomicity, Consistency, Isolation, Durability) work in transactions.
+                </h3>
+                <div class="container mt-5">
+                    <p class="my-paragraph d-flex justify-content-between align-items-center">
+                        <span><strong>Atomicity:</strong> A transaction must be all-or-nothing.
+                        </span>
+                        <a class="toggle-collapse" data-bs-toggle="collapse" href="#collapsibleText" role="button"
+                            aria-expanded="false" aria-controls="collapsibleText">
+                            Read more <i class="bi bi-chevron-down"></i>
+                        </a>
+                    </p>
+                    <div id="collapsibleText" class="collapse">
+                        <p>
+                            <strong>Consistency:</strong> A transaction takes the database from one valid state to
+                            another.
+                            <br>
+                            <strong>Isolation:</strong> Transactions operate independently without interference.
+                            <br>
+                            <strong>Durability:</strong> Once a transaction is committed, the data remains persistent.
+                            <br>
+                            <strong>Industry:</strong> ACID properties are crucial for mission-critical applications
+                            like <strong>Uber</strong>.
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>What is the purpose of a materialized view, and when would you use it over a normal view?</h3>
+                <div class="container mt-5">
+                    <p class="my-paragraph d-flex justify-content-between align-items-center">
+                        <span>A <strong>materialized view</strong> stores the result of a query physically on disk,
+                            providing faster access.
+                        </span>
+                        <a class="toggle-collapse" data-bs-toggle="collapse" href="#collapsibleText" role="button"
+                            aria-expanded="false" aria-controls="collapsibleText">
+                            Read more <i class="bi bi-chevron-down"></i>
+                        </a>
+                    </p>
+                    <div id="collapsibleText" class="collapse">
+                        <p>
+                            <strong>Use cases:</strong>
+                        <ul>
+                            <li>Frequently queried data that changes infrequently.</li>
+                            <li>Aggregate data summaries.</li>
+                        </ul>
+                        <strong>Industry example:</strong> In large financial institutions like
+                        <strong>JPMorgan</strong>, materialized views are used for analytical reporting on large
+                        datasets.
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3> Describe a scenario where you would use a stored procedure instead of a trigger.</h3>
+                <div class="container mt-5">
+                    <p class="my-paragraph d-flex justify-content-between align-items-center">
+                        <span> A <strong>stored procedure</strong> is explicitly executed by a user or an application,
+                            ideal for tasks requiring user input or parameters.
+
+                        </span>
+                        <a class="toggle-collapse" data-bs-toggle="collapse" href="#collapsibleText" role="button"
+                            aria-expanded="false" aria-controls="collapsibleText">
+                            Read more <i class="bi bi-chevron-down"></i>
+                        </a>
+                    </p>
+                    <div id="collapsibleText" class="collapse">
+                        <p>
+                            A <strong>trigger</strong> is automatically invoked by a database event.
+                            <br>
+                            <strong>Scenario:</strong> In an <strong>e-commerce application</strong>, a stored procedure
+                            could process an order when a customer checks out, while a trigger could log activity or
+                            send notifications automatically.
+                            <br>
+                            <strong>Industry standard:</strong> Stored procedures are commonly used for processing
+                            payroll, while triggers are used by companies like <strong>LinkedIn</strong> to log
+                            activity.
+                        </p>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Oct 2024. <i>Jems Chaudhary.</i> &#128526;</p>
+    </footer>
+
+    <!-- Bootstrap 5 Bundle with Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+       
+       document.addEventListener('DOMContentLoaded', function () {
+
+            // Select all toggle buttons
+            document.querySelectorAll('.toggle-collapse').forEach((toggleButton) => {
+                // Get the collapse target from the href attribute
+                const collapseId = toggleButton.getAttribute('href');
+                const collapseElement = document.querySelector(collapseId);
+
+                // Bootstrap collapse show event
+                collapseElement.addEventListener('show.bs.collapse', function () {
+                    toggleButton.innerHTML = 'Collapse <i class="bi bi-chevron-up"></i>';
+                });
+
+                // Bootstrap collapse hide event
+                collapseElement.addEventListener('hide.bs.collapse', function () {
+                    toggleButton.innerHTML = 'Read more <i class="bi bi-chevron-down"></i>';
+                });
+            });
+
+        }); //doc.ready ends
+
+
+    </script>
+
+</body>
+
+</html>

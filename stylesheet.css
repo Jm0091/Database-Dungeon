@@ -1,0 +1,134 @@
+body {
+  font-family: "Afacad Flux";
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.header {
+  background-color: #000;
+  color: white;
+  padding: 20px 0;
+}
+
+.header-title {
+  font-size: 2rem;
+  /* Large font size for the title */
+}
+
+.header a {
+  text-decoration: none;
+  margin: 0 15px;
+  transition: color 0.3s;
+}
+
+.header a:hover {
+  color: #f8f9fa;
+  border: 2px solid orange;
+  background-color: #000;
+}
+
+.bounce {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: scale(1);
+  }
+
+  40% {
+    transform: scale(1.2);
+  }
+
+  60% {
+    transform: scale(1.1);
+  }
+}
+
+.content {
+  margin-top: 30px;
+}
+
+.qa-section {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2,
+h3 {
+  color: #000;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 10px;
+}
+
+.content {
+  margin-top: 20px;
+}
+
+.qa-section {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.question {
+  position: relative;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #ccc;
+  /* Line separator between questions */
+  padding-bottom: 15px;
+}
+
+.question:last-child {
+  border-bottom: none;
+  /* Remove the last border */
+}
+
+.question h3 {
+  font-size: 1.5rem;
+  color: #000;
+  /* Black text for question titles */
+}
+
+.question p {
+  font-size: 1.125rem;
+  color: #333;
+  /* Darker gray for answers */
+  margin: 0;
+}
+
+footer p {
+  float: right;
+  margin: 10px;
+}
+
+.collapsible {
+  display: none;
+  margin-top: 10px;
+}
+
+
+.my-paragraph {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
